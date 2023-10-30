@@ -1,49 +1,65 @@
-import { useNavigate } from "react-router-dom"
-import headerLogo from "../../assets/logo-header.svg" 
-import closeIconImg from "../../assets/closeIcon.svg"
-import { Btn, CloseIconImg, HeaderWrapper, LogoImg, SecondaryContainer } from "./HeaderStyle"
-import { goToFeedPage, goToLoginPage } from "../../routes/coordinator"
+import { useNavigate } from "react-router-dom";
+import * as s from "./styledHeader";
+import { goToLogin, goToPosts } from "../../routes/coordinator";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
-export const Header = ({ closeIcon }) => {
-    const navigate = useNavigate();
+export const Header = () => {
+  const navigate = useNavigate();
+  const context = useContext(GlobalContext)
+  const page = window.location.href
 
-    const logoutFunction = () => {
-        localStorage.removeItem('token')
-        goToLoginPage(navigate)
-    }
+  return (
+    <>
+      {/* Signup Page */}
+      {page.includes("signup") && (
+          <s.ContainerLogo>
+            <s.ImgLogo
+              src="https://uploaddeimagens.com.br/images/004/613/727/full/Group_3_%281%29.png?1695155531"
+              alt="logo-labeddit"
+            />
+          <s.SubTitle onClick={() => {
+            context.removeToken()
+            goToLogin(navigate)
+          }}>Entrar</s.SubTitle>
+          </s.ContainerLogo>
+      )}
 
-    const chooseButton = () => {
-        if(location.pathname === '/signup'){
-            return(
-                <Btn
-                    onClick={()=>goToLoginPage(navigate)}
-                >Entrar</Btn>
-            )
-        }else{
-            return(
-                <Btn
-                    onClick={()=>logoutFunction()}
-                >Logout</Btn>
-            )
-        }
-    }
-    return(
-        <HeaderWrapper>
-            <SecondaryContainer>
-                {closeIcon &&
-                    <CloseIconImg 
-                        src={closeIconImg} 
-                        alt="close" 
-                        onClick={()=>goToFeedPage(navigate)}
-                    /> 
-                }
-                <LogoImg src={headerLogo} alt="Labeddit logo"/>
+      {/* Post Page */}
+      {page.includes("posts") && (
+          <s.ContainerLogo>
+            <s.ImgLogo
+              src="https://uploaddeimagens.com.br/images/004/613/727/full/Group_3_%281%29.png?1695155531"
+              alt="logo-labeddit"
+            />
+          <s.SubTitle onClick={() => {
+            context.removeToken()
+            goToLogin(navigate)
+          }}>Logout</s.SubTitle>
+          </s.ContainerLogo>
+      )}
 
-                {chooseButton()}
-            </SecondaryContainer>
-            
-        </HeaderWrapper>
-    )
-}
+      {/* Comment Page */}
+      {page.includes("comments") && (
+        
+          <s.ContainerLogoComments>
+            <s.ImgReturn
+              onClick={() => goToPosts(navigate)}
+              src="https://uploaddeimagens.com.br/images/004/617/271/full/Group_2.png?1695500039"
+              alt="X"
+            />
 
-export default Header
+            <s.ImgLogo
+              src="https://uploaddeimagens.com.br/images/004/613/727/full/Group_3_%281%29.png?1695155531"
+              alt="logo-labeddit"
+            />
+            <s.SubTitle onClick={() => {
+            context.removeToken()
+            goToLogin(navigate)
+          }}>Logout</s.SubTitle>
+          </s.ContainerLogoComments>
+        
+      )}
+    </>
+  );
+};

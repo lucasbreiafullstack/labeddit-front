@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "projeto-labeddit-front",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,16 +10,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mui/material": "^5.14.15",
-    "@mui/styled-engine-sc": "^6.0.0-alpha.3",
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@iconify/react": "^4.1.1",
+    "@stitches/react": "^1.2.8",
     "axios": "^1.5.1",
+    "framer-motion": "^10.16.4",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.17.0",
-    "styled-components": "^6.1.0"
+    "react-native-linear-gradient": "^2.8.3",
+    "react-router-dom": "^6.16.0",
+    "styled-components": "^6.0.8",
+    "sweetalert2": "^11.7.31"
   },
   "devDependencies": {
-    "@types/react": "^18.2.31",
+    "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
     "eslint": "^8.45.0",

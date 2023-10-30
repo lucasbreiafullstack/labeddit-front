@@ -1,21 +1,16 @@
-import { useState } from "react";
+import { useState } from "react"
 
-export default function useForm(initialState) {
+export const useForm = (initialState) => {
     const [form, setForm] = useState(initialState)
 
-    const onChangeInput = (e) => {
-        const {value, name} = e.target;
-        setForm({...form, [name]: value})
-    };
+    const onChange = (e) => {
+        const { name, value } = e.target
+        setForm({ ... form, [name]:value })
+    }
 
-    const clearInputs = () => {
+    const resetForm = () => {
         setForm(initialState)
-    };
+    }
 
-    return  [form, onChangeInput, clearInputs] 
+    return [form, onChange, resetForm]
 }
-
-//45 - autenticacao-em-react-template
-// 77 - deplpoy-template-frontend
-//45.1 - autenticacao-em-react-exercicios
-//49 - revisao-react-frontend
