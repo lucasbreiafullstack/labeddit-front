@@ -1,6 +1,6 @@
 
 import { Login } from "../pages/login";
-import { Forum } from "../pages/forum";
+import { Feed } from "../pages/feed";
 import { PostPage } from "../pages/post"
 import { Signup } from "../pages/signup";
 import { useEffect } from "react";
@@ -43,7 +43,7 @@ export default function Router() {
                             content={userContent}
                         />
                         :
-                        <Forum
+                        <Feed
                             content={content}
                             reversedPosts={reversedPosts}
 
@@ -55,14 +55,14 @@ export default function Router() {
                         <Signup
                             content={userContent} />
                         :
-                        <Forum
+                        <Feed
                             content={content}
                             reversedPosts={reversedPosts}
                         />}
                 />
 
-                <Route path="/forum" element={
-                    <Forum
+                <Route path="/feed" element={
+                    <Feed
                         content={content}
                         reversedPosts={reversedPosts}
                     />}
@@ -72,7 +72,7 @@ export default function Router() {
                     return (
                         <Route
                             key={index}
-                            path={`/forum/post/${url}`}
+                            path={`/feed/post/${url}`}
                             element={
                                 <PostPage
                                     url={url}

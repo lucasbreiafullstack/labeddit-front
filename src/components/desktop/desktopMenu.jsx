@@ -1,13 +1,11 @@
-import * as GiIcons from 'react-icons/gi'
 import {
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
-    IconButton,
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { goToDelete, goToSettings, goToForum } from '../../router/Coordinators'
+import { goToDelete, goToSettings, goToFeed } from '../../router/Coordinators'
 
 export const DesktopMenu = (props) => {
 
@@ -40,8 +38,8 @@ export const DesktopMenu = (props) => {
                         bgColor={"#fefdfc"}
                         fontSize={14}
                         _hover={{ bgColor: '#f0eeee' }}
-                        onClick={() => goToForum(navigate)}>
-                        Ir para o fórum
+                        onClick={() => goToFeed(navigate)}>
+                        Ir para o feed
                     </MenuItem>
 
                     <MenuItem

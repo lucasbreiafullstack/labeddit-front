@@ -2,16 +2,16 @@ export const goToLogin = (navigate) => {
     navigate("/")
 }
 
-export const goToSignup= (navigate) => {
+export const goToSignup = (navigate) => {
     navigate("/signup")
 }
 
-export const goToForum = (navigate) => {
-    navigate("/forum")
+export const goToFeed = (navigate) => {
+    navigate("/feed")
 }
 
 export const goToPost = (navigate, url) => {
-    navigate(`/forum/post/${url}`)
+    navigate(`/feed/post/${url}`)
 }
 
 export const goToSettings = (navigate) => {

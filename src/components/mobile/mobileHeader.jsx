@@ -1,6 +1,6 @@
 import { MobileMenu } from './mobileMenu'
 import { useNavigate } from 'react-router-dom'
-import { goToForum } from '../../router/Coordinators'
+import { goToFeed } from '../../router/Coordinators'
 import { logout } from '../../assets/scripts/Functions'
 import HeaderLogo from '../../assets/images/headerlogo.png'
 
@@ -16,7 +16,7 @@ export const MobileHeader = (props) => {
             {user.isLogged ? <span className="text-[12px] absolute">Olá, {user.username}</span> : ""}
 
             < img src={HeaderLogo}
-                onClick={() => goToForum(navigate)}
+                onClick={() => goToFeed(navigate)}
                 className="cursor-pointer relative left-[44vw]"
                 alt="Labeddit" />
 

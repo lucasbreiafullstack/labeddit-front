@@ -1,6 +1,6 @@
 import { DesktopMenu } from './desktopMenu'
 import { useNavigate } from 'react-router-dom'
-import { goToForum } from '../../router/Coordinators'
+import { goToFeed } from '../../router/Coordinators'
 import { logout } from '../../assets/scripts/Functions'
 import DesktopLogo from '../../assets/images/desktoplogo.png'
 
@@ -16,7 +16,7 @@ export const DesktopHeader = (props) => {
 
 
             < img src={DesktopLogo}
-                onClick={() => goToForum(navigate)}
+                onClick={() => goToFeed(navigate)}
                 className="cursor-pointer relative lg:w-[10vw] md:w-[15vw] p-5 left-[4vw]"
                 alt="Labeddit" />
 

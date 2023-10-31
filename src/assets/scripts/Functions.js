@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { goToLogin } from "../../router/Coordinators"
-import { goToForum } from "../../router/Coordinators"
+import { goToFeed } from "../../router/Coordinators"
 
 export const states = () => {
 
@@ -82,7 +82,7 @@ export const posting = (request, content, token, array, setArray, setState) => {
 }
 
 export const delPost = (request, id, token, array, setArray, navigate) => {
-    request(id, token, array, setArray).then(goToForum(navigate))
+    request(id, token, array, setArray).then(goToFeed(navigate))
 
 }
 

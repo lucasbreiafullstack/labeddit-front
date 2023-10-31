@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { BASE_URL } from '../Functions'
-import { goToForum } from '../../../router/Coordinators'
+import { goToFeed } from '../../../router/Coordinators'
 
 export const LoginRequest = async (form, navigate, setState, isLoading) => {
 
@@ -22,7 +22,7 @@ export const LoginRequest = async (form, navigate, setState, isLoading) => {
             }
             setState(user),
             localStorage.setItem("user", JSON.stringify(user)),
-            goToForum(navigate),
+            goToFeed(navigate),
             isLoading(false)
         }
     } catch (error) {

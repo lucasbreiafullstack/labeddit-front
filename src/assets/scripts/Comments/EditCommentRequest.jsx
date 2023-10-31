@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { BASE_URL } from '../Functions'
 
 export const editComment = async (id, content, token, setState) => {
 
