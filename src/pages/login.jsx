@@ -11,9 +11,11 @@ export const Login = (props) => {
       <div className="lg:bg-mainbg w-[75vw]">
         <img
           src={Person}
-          alt="Duas pessoas recepcionando o usuário"
+          alt="uma pessoa recepcionando o usuário"
           className="hidden lg:flex w-[45vw] top-[34vh] absolute left-[30vw] z-10"
         />
+
+        <h1 className="mt-[10vh] flex flex-col font-Poppins text-[16px] items-center lg:text-[25px] top-[50vh] absolute left-[3vw]" >Faça parte da maior rede de Devs do mundo!</h1>
       </div>
       <div className="form-container">
         {isLoading === true ? (
