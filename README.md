@@ -58,7 +58,7 @@ Para instalar as dependências e iniciar o projeto, você pode utilizar o NPM:
 
 ## Deploy do projeto
 
-Link Deploy Frontend:  <br>
+Link Deploy Frontend: https://labeddit-front-pi.vercel.app/  <br>
 Link Deploy Backend: https://documenter.getpostman.com/view/26572176/2s9YJdUMeh
 
 <h4 align="center">
