@@ -12,7 +12,7 @@ export const Login = (props) => {
         <img
           src={Person}
           alt="Duas pessoas recepcionando o usuário"
-          className="hidden lg:flex w-[7vw] top-[3vh] absolute left-[68.6vw] z-10"
+          className="hidden lg:flex w-[45vw] top-[34vh] absolute left-[30vw] z-10"
         />
       </div>
       <div className="form-container">
