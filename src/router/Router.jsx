@@ -1,4 +1,3 @@
-
 import { Login } from "../pages/login";
 import { Feed } from "../pages/feed";
 import { PostPage } from "../pages/post"
@@ -8,14 +7,14 @@ import { Settings } from "../pages/settings";
 import { DeleteAccount } from "../pages/delete";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { getPosts } from "../assets/scripts/Posts/GetPostsRequest";
-import { states, getUserState } from "../assets/scripts/Functions";
+import { initialState, getUserState } from "../assets/scripts/Functions";
 import { getComments } from "../assets/scripts/Comments/GetCommentsRequest";
 
 
 export default function Router() {
 
 
-    const [user, setUser, posts, setPosts, comments, setComments, textArea, setTextArea, isLoading, setIsLoading] = states()
+    const [user, setUser, posts, setPosts, comments, setComments, textArea, setTextArea, isLoading, setIsLoading] = initialState()
 
     const reversedPosts = [...posts].reverse()
     const urlsList = reversedPosts.map(post => post.id.slice(0, 8))

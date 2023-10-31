@@ -1,22 +1,23 @@
-import axios from 'axios'
+import axios from 'axios';
+import { BASE_URL } from '../url/url';
 
 export const editComment = async (id, content, token, setState) => {
-
     try {
-        const response = await axios.put(`http://127.0.0.1:3003/comments/${id}`,
-            {
-                content: content
-            },
-            {
-                headers: {
-                    Authorization: token
-                }
+        const response = await axios.put(`${BASE_URL}/comments/${id}`, {
+            content: content
+        }, {
+            headers: {
+                Authorization: token
             }
-        )
+        })
+
+        // Se a solicitação for bem-sucedida, você pode atualizar o estado (setState)
         if (response) {
             setState(false)
         }
     } catch (error) {
+        // Manipula erros
         alert(error.message);
+        // Outras ações de tratamento de erros podem ser adicionadas aqui, se necessário.
     }
-}
+};

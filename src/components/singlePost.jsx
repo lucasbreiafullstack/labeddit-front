@@ -5,7 +5,7 @@ import { EditTextArea } from "./textArea";
 import { useNavigate } from "react-router-dom";
 import { goToFeed } from "../router/Coordinators";
 import { delPost } from "../assets/scripts/Functions";
-import { editingContent } from "../assets/scripts/Functions";
+import { useEditingContent } from "../assets/scripts/Functions";
 import { editPost } from "../assets/scripts/Posts/EditPostRequest";
 import { deletePost } from "../assets/scripts/Posts/DeletePostRequest";
 import {
@@ -14,7 +14,7 @@ import {
 } from "../assets/scripts/Posts/LikeOrDislikePostRequest";
 
 export const SinglePost = (props) => {
-  const [editing, setEditing, content, setContent] = editingContent();
+  const [editing, setEditing, content, setContent] = useEditingContent();
   const navigate = useNavigate();
 
   return (

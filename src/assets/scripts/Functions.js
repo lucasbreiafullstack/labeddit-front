@@ -1,101 +1,96 @@
-import { useState } from "react"
-import { goToLogin } from "../../router/Coordinators"
-import { goToFeed } from "../../router/Coordinators"
+import { useState } from "react";
+import { goToLogin } from "../../router/Coordinators";
+import { goToFeed } from "../../router/Coordinators";
 
-export const states = () => {
-
+// Define o estado inicial da aplicação
+export const initialState = () => {
+    // Define o estado do usuário
     const [user, setUser] = useState({
         id: "",
         username: "",
         email: "",
         role: "",
         token: "",
-        logged: ""
+        isLogged: ""
+    });
 
-    })
+    // Define o estado do texto da área de entrada
+    const [textArea, setTextArea] = useState({ post: "", comment: "" });
 
-    const [textArea, setTextArea] = useState({ post: "", comment: "" })
-    const [posts, setPosts] = useState([])
-    const [comments, setComments] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    // Define o estado das postagens
+    const [posts, setPosts] = useState([]);
 
-    return [user, setUser, posts, setPosts, comments, setComments, textArea, setTextArea, isLoading, setIsLoading]
+    // Define o estado dos comentários
+    const [comments, setComments] = useState([]);
 
-}
+    // Define o estado para controlar o carregamento
+    const [isLoading, setIsLoading] = useState(false);
 
+    return [user, setUser, posts, setPosts, comments, setComments, textArea, setTextArea, isLoading, setIsLoading];
+};
+
+// Função para executar ação ao pressionar Enter
 export const onEnter = (e, fn) => {
     if (e.key === 'Enter') {
-         fn()
+        fn();
     }
 };
 
-export const editingContent = () => {
+// Define o estado de edição
+export const useEditingContent = () => {
+    const [editing, setEditing] = useState(false);
+    const [content, setContent] = useState("");
 
-    const [editing, setEditing] = useState(false)
-    const [content, setContent] = useState("")
+    return [editing, setEditing, content, setContent];
+};
 
-    return [editing, setEditing, content, setContent]
-}
-
+// Obtém o estado do usuário do armazenamento local
 export const getUserState = (setState) => {
-    const getUser = localStorage.getItem("user")
+    const getUser = localStorage.getItem("user");
     if (getUser) {
-        const newUser = JSON.parse(getUser)
-        setState({
-            id: newUser.id,
-            username: newUser.username,
-            email: newUser.email,
-            role: newUser.role,
-            token: newUser.token,
-            isLogged: newUser.isLogged
-        })
+        const newUser = JSON.parse(getUser);
+        setState(newUser);
     }
-}
+};
 
+// Função para fazer logout do usuário
 export const logout = (user, setState, navigate) => {
-
-    localStorage.removeItem("user")
+    localStorage.removeItem("user");
     setTimeout(() => {
-        setState({
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            role: user.role,
-            token: user.token,
-            isLogged: ""
-        })
-    }, 1000)
-    goToLogin(navigate)
-}
+        setState({ ...user, isLogged: "" });
+    }, 1000);
+    goToLogin(navigate);
+};
 
-
+// Inicia a edição de um post
 export const startEdit = (request, post, content, token, array, setArray, setState) => {
     if (post.content !== "") {
-        request(post.id, content, token, array, setArray)
-        setState(true)
+        request(post.id, content, token, array, setArray);
+        setState(true);
     }
-}
+};
 
+// Faz uma postagem ou comentário
 export const posting = (request, content, token, array, setArray, setState) => {
-    request(content, token, array, setArray)
-    setState({post: "", comment: ""})
-}
+    request(content, token, array, setArray);
+    setState({ post: "", comment: "" });
+};
 
+// Deleta um post
 export const delPost = (request, id, token, array, setArray, navigate) => {
-    request(id, token, array, setArray).then(goToFeed(navigate))
+    request(id, token, array, setArray).then(() => goToFeed(navigate));
+};
 
-}
-
+// Verifica se o email inserido corresponde ao email do usuário
 export const checkData = (mail, userMail, setState) => {
     if (mail === userMail) {
-        setState(1)
+        setState(1);
     } else {
-        alert("Email inválido, insira o relativo a sua conta.")
+        alert("Email inválido, insira o relativo à sua conta.");
     }
-}
+};
 
+// Função para editar um usuário
 export const edit = (request, id, token, form, setState) => {
-    request(id, token, form, setState)
-}
-
-export const BASE_URL = "https://labeddit-api-0ek7.onrender.com"
+    request(id, token, form, setState);
+};
